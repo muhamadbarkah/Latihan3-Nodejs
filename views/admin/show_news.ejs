@@ -1,0 +1,77 @@
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Data Active Express News</h3>
+  
+                <div class="box-tools pull-right">
+                  <div class="input-group input-group-sm">
+                    <a href="/express/admin/add_produk">
+                      <button type="button" class="btn btn-block btn-success"><i class="fa fa-plus"></i>&nbsp;Add News</button>
+                    </a>
+                    <!-- <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"> 
+                    <div class="input-group-btn">
+                      <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-warning -->
+              
+              <!-- /.box-alert -->
+              <% if (messages.info) { %>         
+              <div class="box-body">
+                <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                  <%= messages.info %>
+                </div>
+              </div>
+              <% } %>
+              
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                  <tr>
+                    <th>ID Produk</th>
+                    <th>Nama Produk</th>
+                    <th>Gambar Produk</th>
+                    <th>harga Produk</th>
+                    <th width="200">Deskripsi Produk</th>
+                    <th width="25">Modify</th>
+                  </tr>
+                  <%
+                    if (data.length) {
+                      for (var i=0; i < data.length; i++) {
+                  %>
+                  <tr>
+                    <td><%=data[i].id_product%></td>
+                    <td><%=data[i].nama_produk%></td>
+                    <td><img style="padding-top: 20px" src="/public/news_images/<%=data[i].gambar_produk%>" width="75" height="85" /></td>
+                    <td>Rp. <%=data[i].harga_product%></td>
+                    <td><%=data[i].des_product.substring(0, 75)%><a href="#">.....read more</a></td>
+                    <td>
+                      <a class="btn btn-warning" href="/express/admin/edit_produk/<%=data[i].id_product%>"><i class="glyphicon glyphicon-edit"></i></a>                      
+                      <a class="btn btn-danger" href="/express/admin/delete_produk/<%=data[i].id_product%>" onclick="return confirm('Apakah Yakin dihapus Produk = ' +  <%=data[i].id_product%> + '?' )"><i class="glyphicon glyphicon-trash"></i></a>
+                    </td>
+                  </tr>
+                  <%
+                      }
+                    }
+                  %>
+                </table>
+              </div>
+              <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                  <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                  </ul>
+                </div>
+            </div>
+            <!-- /.box -->
+          </div>
+        </div>
